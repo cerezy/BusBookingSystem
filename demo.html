@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>欢迎使用班车预约系统</title>
+    </head>
+    <body>
+        <p id = "time"></p>
+        <p id = "p1">
+            你好，请登录
+        </p>
+        <button onclick="login()" onmouseover="inlogin()" onmouseout="outLoginOrExit()">登录</button>
+        <button onclick="exit()" onmouseover="inexit()" onmouseout="outLoginOrExit()">退出</button>
+        <p id = "p2"></p>
+    </body>
+
+    <script>
+        // window.alert("当前还未登录，请登录");
+        function login() {
+            document.getElementById("p1").innerHTML="登录成功";
+        }
+        function inlogin() {
+            document.getElementById("p2").innerHTML="点击以登录";
+        }
+        function outLoginOrExit() {
+            document.getElementById("p2").innerHTML="";
+        }
+
+        function exit() {
+            document.getElementById("p1").innerHTML="退出成功";
+        }
+        function inexit() {
+            document.getElementById("p2").innerHTML="点击以退出";
+        }
+
+        function showTime() {
+            var d = new Date();
+            var year = d.getFullYear(), month = d.getMonth() + 1, day = d.getDate(), hour = d.getHours(), min = d.getMinutes(), sec = d.getSeconds(); 
+            if (hour.toString().length == 1) hour = "0" + hour;
+            if (min.toString().length == 1) min = "0" + min;
+            if (sec.toString().length == 1) sec = "0" + sec;
+            var time = `今天是${year}年${month}月${day}日，当前时间为${hour}:${min}:${sec}`;
+            document.getElementById("time").innerHTML = time;
+            setTimeout(showTime, 1000);
+        }
+        window.onload = showTime();
+
+        function test() {
+            var a = 0.1, b = 0.2;
+            var c = a + b;
+            console.log(c);
+        }
+        test();
+    </script>
+</html>
