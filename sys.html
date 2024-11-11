@@ -45,9 +45,35 @@
         button:hover {
             background: #4cae4c;
         }
+        .avatar-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-profile {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        .user-profile:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <div class="avatar-container">
+        <img src="path/to/your/avatar.jpg" alt="User Avatar" class="user-avatar">
+        <a href="/profile" class="user-profile">个人中心</a>
+    </div>
     <div class="container">
         <h2>班车预约</h2>
         <form id="bookingForm">
