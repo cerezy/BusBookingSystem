@@ -64,7 +64,7 @@ async def login(login: Login):
     first_not = False
     for row in results:
         print(row[2]+" "+row[4])
-        if username == row[2] and password == row[4]:
+        if username == row[0] and password == row[4]:
 
             Now_Username = row[2]
             Now_Password = row[4]
@@ -297,7 +297,9 @@ async def book(book: Book):
     cursor.execute(sql)
     results = cursor.fetchall()
     reseat = results[0][8]
-    if reseat:
+    if reseat <= 0:
+        return {"status": "full"}
+    elif reseat:
         return {"status": "available"}
 
 @app.post("/payed")
@@ -379,8 +381,4 @@ async def deleteBus(busId: BusId):
 # 运行应用
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)
-    # Now_ID = 123
-    # sql_update_2 = f"UPDATE bookings SET status = '已预约' WHERE bookingId = 8"
-    # cursor.execute(sql_update_2)
-    # db.commit()
 
